@@ -1,5 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
+const passport = require("passport");
 
 const User = require("../models/user-model.js");
 
@@ -74,6 +75,13 @@ router.get("/logout", (req, res, next) => {
   req.flash("success", "Logged out successfully!");
   res.redirect("/");
 });
+
+router.get("/slack/login", passport.authenticate("slack"));
+router.get("/slack/user-info",
+  passport.authenticate("slack", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+  }));
 
 
 module.exports = router;
