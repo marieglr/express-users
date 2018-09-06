@@ -12,7 +12,7 @@ const userSchema = new Schema({
     unique: true,
     match: /^.+@.+\..+$/,
   },
-  encryptedPassword: { type: String, required: true },
+  encryptedPassword: { type: String },
 }, {
   // additional settings for Schema constructor function (class)
   timestamps: true,

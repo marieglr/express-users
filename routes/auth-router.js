@@ -83,5 +83,18 @@ router.get("/slack/user-info",
     failureRedirect: "/login",
   }));
 
+router.get("/google/login",
+  passport.authenticate("google", {
+    scope: [
+      "https://www.googleapis.com/auth/plus.login",
+      "https://www.googleapis.com/auth/plus.profile.emails.read",
+    ]
+  }));
+router.get("/google/user-info",
+  passport.authenticate("google", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+  }));
+
 
 module.exports = router;
