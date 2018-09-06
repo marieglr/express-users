@@ -12,6 +12,8 @@ const session      = require("express-session");
 const MongoStore   = require("connect-mongo")(session);
 const flash        = require("connect-flash");
 
+const passportSetup = require("./config/passport/passport-setup.js");
+
 
 mongoose
   .connect('mongodb://localhost/express-users', {useNewUrlParser: true})
@@ -58,9 +60,11 @@ app.use(session({
   // use "connect-mongo" to store session information inside MongoDB
   store: new MongoStore({ mongooseConnection: mongoose.connection }),
 }));
+// MUST come after "app.use(session())"
+passportSetup(app);
+
 // enables flash messages in our routes with "req.flash()"
 app.use(flash());
-
 app.use((req, res, next) => {
   // makes flash messages accessible inside hbs files as "messages"
   res.locals.messages = req.flash();

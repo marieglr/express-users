@@ -53,12 +53,26 @@ router.post("/process-login", (req, res, next) => {
         return;
       }
 
-      // save a flash message to display in the HOME page
-      req.flash("success", "Log in success! 🧙‍♀️");
-      // go to the home page if password is GOOD (log in worked!)
-      res.redirect("/");
+      // LOG IN THIS USER
+      // "req.logIn()" is a Passport method that calls "serializeUser()"
+      // (that saves the USER ID in the session)
+      req.logIn(userDoc, () => {
+        // save a flash message to display in the HOME page
+        req.flash("success", "Log in success! 🧙‍♀️");
+        // go to the home page if password is GOOD (log in worked!)
+        res.redirect("/");
+      });
     })
     .catch(err => next(err));
+});
+
+router.get("/logout", (req, res, next) => {
+  // "req.logOut()" is a Passport method that removes the user ID from session
+  req.logOut();
+
+  // save a flash message to display in the HOME page
+  req.flash("success", "Logged out successfully!");
+  res.redirect("/");
 });
 
 
