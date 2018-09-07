@@ -80,7 +80,9 @@ router.get("/slack/login", passport.authenticate("slack"));
 router.get("/slack/user-info",
   passport.authenticate("slack", {
     successRedirect: "/",
+    successFlash: "Slack log in successful! 😅",
     failureRedirect: "/login",
+    failureFlash: "Slack log in failed! 🤨",
   }));
 
 router.get("/google/login",
@@ -93,7 +95,9 @@ router.get("/google/login",
 router.get("/google/user-info",
   passport.authenticate("google", {
     successRedirect: "/",
+    successFlash: "Google log in successful! 😌",
     failureRedirect: "/login",
+    failureFlash: "Google log in failed! ☹️",
   }));
 
 
