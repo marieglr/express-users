@@ -24,6 +24,12 @@ const userData = [
     email: "ghdj@us.g",
     encryptedPassword: bcrypt.hashSync("ggggg0", 10),
     role: "admin",
+  },
+  {
+    fullName: "Barnabus Bixley",
+    email: "b@b.b",
+    encryptedPassword: bcrypt.hashSync("bbbbb0", 10),
+    role: "admin",
   }
 ];
 
