@@ -6,8 +6,8 @@ const User = require("../../models/user-model.js");
 
 passport.use(new SlackStrategy({
   // settings for the Slack strategy
-  clientID: "2432150752.431389884199",
-  clientSecret: "2e925f12a0d9dbbad2b723b756247ea9",
+  clientID: process.env.SLACK_ID,
+  clientSecret: process.env.SLACK_SECRET,
   callbackURL: "/slack/user-info",
   proxy: true, // need this for production version to work 🤷‍♀️
 }, (accessToken, refreshToken, userInfo, done) => {

@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
@@ -5,7 +7,7 @@ const User = require("../models/user-model.js");
 
 mongoose
   .connect(
-    "mongodb://localhost/express-users",
+    process.env.MONGODB_URI,
     { useNewUrlParser: true }
   )
   .then(x => {
