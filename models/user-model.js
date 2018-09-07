@@ -24,6 +24,13 @@ const userSchema = new Schema({
   timestamps: true,
 });
 
+// define the "isAdmin" virtual property (a property that's really a method)
+// CAN'T be an arrow function because it uses "this"
+// (we use this to get around the limits on conditions in HBS files)
+userSchema.virtual("isAdmin").get(function () {
+  return this.role === "admin";
+});
+
 const User = mongoose.model("User", userSchema);
 
 
