@@ -12,7 +12,6 @@ mongoose
     console.error('Error connecting to mongo', err)
   });
 
-
 const userData = [
   {
     fullName: "Greg Gardener",
@@ -20,6 +19,12 @@ const userData = [
     encryptedPassword: bcrypt.hashSync("ggggg0", 10),
     role: "admin",
   },
+  {
+    fullName: "ABy Gardener",
+    email: "ghdj@us.g",
+    encryptedPassword: bcrypt.hashSync("ggggg0", 10),
+    role: "admin",
+  }
 ];
 
 
