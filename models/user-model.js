@@ -13,6 +13,12 @@ const userSchema = new Schema({
     match: /^.+@.+\..+$/,
   },
   encryptedPassword: { type: String },
+  role: {
+    type: String,
+    enum: [ "normal", "admin" ],
+    required: true,
+    default: "normal",
+  },
 }, {
   // additional settings for Schema constructor function (class)
   timestamps: true,
