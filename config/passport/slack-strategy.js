@@ -1,4 +1,4 @@
-const passport = require("passport");
+/*const passport = require("passport");
 const SlackStrategy = require("passport-slack").Strategy;
 
 const User = require("../../models/user-model.js");
@@ -36,3 +36,4 @@ passport.use(new SlackStrategy({
     })
     .catch(err => done(err));
 }));
+*/

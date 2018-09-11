@@ -76,29 +76,29 @@ router.get("/logout", (req, res, next) => {
   res.redirect("/");
 });
 
-router.get("/slack/login", passport.authenticate("slack"));
-router.get("/slack/user-info",
-  passport.authenticate("slack", {
-    successRedirect: "/",
-    successFlash: "Slack log in successful! 😅",
-    failureRedirect: "/login",
-    failureFlash: "Slack log in failed! 🤨",
-  }));
+// router.get("/slack/login", passport.authenticate("slack"));
+// router.get("/slack/user-info",
+//   passport.authenticate("slack", {
+//     successRedirect: "/",
+//     successFlash: "Slack log in successful! 😅",
+//     failureRedirect: "/login",
+//     failureFlash: "Slack log in failed! 🤨",
+//   }));
 
-router.get("/google/login",
-  passport.authenticate("google", {
-    scope: [
-      "https://www.googleapis.com/auth/plus.login",
-      "https://www.googleapis.com/auth/plus.profile.emails.read",
-    ]
-  }));
-router.get("/google/user-info",
-  passport.authenticate("google", {
-    successRedirect: "/",
-    successFlash: "Google log in successful! 😌",
-    failureRedirect: "/login",
-    failureFlash: "Google log in failed! ☹️",
-  }));
+// router.get("/google/login",
+//   passport.authenticate("google", {
+//     scope: [
+//       "https://www.googleapis.com/auth/plus.login",
+//       "https://www.googleapis.com/auth/plus.profile.emails.read",
+//     ]
+//   }));
+// router.get("/google/user-info",
+//   passport.authenticate("google", {
+//     successRedirect: "/",
+//     successFlash: "Google log in successful! 😌",
+//     failureRedirect: "/login",
+//     failureFlash: "Google log in failed! ☹️",
+//   }));
 
 
 module.exports = router;

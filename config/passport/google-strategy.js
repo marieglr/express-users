@@ -1,4 +1,4 @@
-const passport = require("passport");
+/*const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 
 const User = require("../../models/user-model.js");
@@ -36,3 +36,4 @@ passport.use(new GoogleStrategy({
     })
     .catch(err => done(err));
 }));
+*/

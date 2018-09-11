@@ -3,8 +3,8 @@ const passport = require("passport");
 const User = require("../../models/user-model.js");
 
 // Run the code inside these files
-require("./slack-strategy.js");
-require("./google-strategy.js");
+// require("./slack-strategy.js");
+// require("./google-strategy.js");
 
 
 // serializeUser(): defines what user data to save in the session
