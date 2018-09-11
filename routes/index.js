@@ -1,6 +1,7 @@
 const express = require('express');
 
 const User = require("../models/user-model.js");
+const fileUploader = require("../config/file-uploader.js");
 
 const router = express.Router();
 
@@ -28,12 +29,21 @@ router.get("/settings", (req, res, next) => {
   }
 });
 
-router.post("/process-settings", (req, res, next) => {
+// "avatarUpload" is our file input's name attribute
+router.post("/process-settings",
+  fileUploader.single("avatarUpload"),
+  (req, res, next) => {
   const { fullName, email } = req.body;
+  let avatar;
+
+  // multer stores the file information in "req.file"
+  if (req.file) {
+    avatar = req.file.secure_url;
+  }
 
   User.findByIdAndUpdate(
     req.user._id, // get the logged in user's ID using Passport's "req.user"
-    { $set: { fullName, email } },
+    { $set: { fullName, email, avatar } },
     { runValidators: true },
   )
     .then(userDoc => {

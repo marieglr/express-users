@@ -19,6 +19,10 @@ const userSchema = new Schema({
     required: true,
     default: "normal",
   },
+  avatar: {
+    type: String,
+    default: "/images/avatar.png",
+  }
 }, {
   // additional settings for Schema constructor function (class)
   timestamps: true,
